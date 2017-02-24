@@ -36,6 +36,16 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        static function find($id)
+        {
+            $stylists = Stylist::getAll();
+            foreach($stylists as $stylist) {
+                if ($stylist->getId() == $id) {
+                    return $stylist;
+                }
+            }
+        }
+
         static function getAll()
         {
             $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists");
