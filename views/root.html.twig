@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>hair salon</title>
+    </head>
+    <body>
+        <h1>Al's Hair Salon</h1>
+        <h3><i>Welcome, Al</i></h3>
+        <h2>Your Stylists</h2>
+        <ul>
+            {% for stylist in stylists %}
+                <li>{{stylist.getName}}</li>
+            {% endfor %}
+        </ul>
+        <h2>Add a Stylist</h2>
+
+    </body>
+</html>
