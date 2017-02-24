@@ -36,6 +36,11 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        function update($name)
+        {
+            $GLOBALS['DB']->exec("UPDATE stylists SET name = '{$name}' WHERE id = {$this->getId()};");
+        }
+
         static function find($id)
         {
             $stylists = Stylist::getAll();

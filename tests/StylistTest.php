@@ -89,6 +89,25 @@
             //assert
             $this->assertEquals($result, $test_stylist2);
         }
+
+        function test_update() {
+            //arrange
+            $name = 'jack lantern';
+            $id = null;
+            $test_stylist = new Stylist($name, $id);
+
+            $name2 = 'hazel ween';
+            $id2 = null;
+
+            //act
+            $test_stylist->save();
+            $test_stylist->update($name2);
+            $result = Stylist::getAll();
+            $test_stylist->setName('hello');
+
+            //assert
+            $this->assertEquals($result[0], $test_stylist);
+        }
     }
 
 
