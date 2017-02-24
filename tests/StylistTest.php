@@ -29,7 +29,7 @@
             $result = Stylist::getAll();
 
             //assert
-            $this->assertEquals($result, 1);
+            $this->assertEquals($result[0], $test_stylist);
         }
     }
 
