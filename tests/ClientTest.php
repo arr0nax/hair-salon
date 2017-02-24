@@ -96,5 +96,27 @@
             //assert
             $this->assertEquals($result, $test_client2);
         }
+
+        function test_update() {
+            //arrange
+            $name = 'sarah is god';
+            $stylist_id = 2;
+            $id = null;
+            $test_client = new Client($name,$stylist_id, $id);
+
+            $name2 = 'shrek is life';
+            $stylist_id2 = 3;
+
+
+            //act
+            $test_client->save();
+            $test_client->update($name2, $stylist_id2);
+            $result = Client::getAll();
+            // $test_client->setName($name2);
+
+            //assert
+            $this->assertEquals($result[0], $test_client);
+
+        }
     }
 ?>

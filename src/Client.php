@@ -47,11 +47,11 @@
             $GLOBALS['DB']->exec("INSERT INTO clients (name, stylist_id) VALUES ('{$this->getName()}', {$this->getStylist_id()});");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
-        //
-        // function update($name)
-        // {
-        //     $GLOBALS['DB']->exec("UPDATE stylists SET name = '{$name}' WHERE id = {$this->getId()};");
-        // }
+
+        function update($name, $stylist_id)
+        {
+            $GLOBALS['DB']->exec("UPDATE clients SET name = '{$name}', stylist_id = '{$stylist_id}' WHERE id = {$this->getId()};");
+        }
 
         // function delete()
         // {
