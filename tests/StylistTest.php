@@ -103,7 +103,7 @@
             $test_stylist->save();
             $test_stylist->update($name2);
             $result = Stylist::getAll();
-            $test_stylist->setName('hello');
+            $test_stylist->setName($name2);
 
             //assert
             $this->assertEquals($result[0], $test_stylist);
