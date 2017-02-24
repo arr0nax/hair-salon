@@ -1,45 +1,41 @@
-# _{Application Name}_
+# Hair Salon
 
-#### _{Brief description of application}, {Date of current version}_
+#### A Simple Way to Keep track of Stylists and Clients, February 24, 2017
 
-#### By _**{List of contributors}**_
+#### By Clayton Collins
 
 ## Description
 
-_{This is a detailed description of your application. Its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }_
+This app uses a database to store information about stylists and their clients. It could be easily expanded to hold other relevant information like phone numbers, emails, haircut history, etc.
 
-## Setup/Installation Requirements
+## Mac Setup/Installation Requirements
 
-* _This is a great place_
-* _to list setup instructions_
-* _in a simple_
-* _easy-to-understand_
-* _format_
+* Clone this repository.
+* Begin your server using mamp or other relevant application. This app is configured to access databases at 'localhost:8889'.
+* Copy the 'hair_salon' and 'hair_salon_test' databases in to mySQL (they are found in the databases folder of this repository).
+* Run 'composer install' in the root of the project directory.
+* Begin a php server in the web folder of this directory (php -S localhost:8000).
+* Access the site by navigating to localhost:8000/ in your browser.
 
-_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
 
-###Back-up MySQL Commands
+###Back-up MySQL Commands - if copying the databases doesnt worl
 * CREATE DATABASE hair_salon;
 * USE hair_salon;
 * CREATE TABLE stylists (id serial primary key, name varchar(255));
 * CREATE TABLE clients (id serial primary key, name varchar(255), stylist_id int);
-{Either repeat these commands in a new database 'hair_salon_test' or use phpMyAdmin to copy the database's structure}
+* _Either repeat these commands in a new database 'hair_salon_test' or use phpMyAdmin to copy the database's structure_
 
 
 ## Known Bugs
 
-_{Are there issues that have not yet been resolved that you want to let users know you know?  Outline any issues that would impact use of your application.  Share any workarounds that are in place. }_
+No known bugs.
 
 ## Support and contact details
 
-_{Let people know what to do if they run into any issues or have questions, ideas or concerns.  Encourage them to contact you or make a contribution to the code.}_
+If you any issues or have questions, ideas or concerns, please contact me or make a pull request.
 
 ## Technologies Used
 
-_{Tell me about the languages and tools you used to create this app. Assume that I know you probably used HTML and CSS. If you did something really cool using only HTML, point that out.}_
+PHP, mySQL, MAMP, Silex, Twig, HTML, CSS
 
-### License
-
-*{Determine the license under which this application can be used.  See below for more details on licensing.}*
-
-Copyright (c) 2017 **_{List of contributors or company name}_**
+Copyright (c) 2017 **Clayton C. Collins**
