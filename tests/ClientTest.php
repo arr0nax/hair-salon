@@ -94,7 +94,7 @@
             $result = Client::find($test_client2->getId());
 
             //assert
-            $this->assertEquals($result[0], $test_client2);
+            $this->assertEquals($result, $test_client2);
         }
     }
 ?>

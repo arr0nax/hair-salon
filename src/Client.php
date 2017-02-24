@@ -58,15 +58,15 @@
         //     $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
         // }
 
-        // static function find($id)
-        // {
-        //     $stylists = Stylist::getAll();
-        //     foreach($stylists as $stylist) {
-        //         if ($stylist->getId() == $id) {
-        //             return $stylist;
-        //         }
-        //     }
-        // }
+        static function find($id)
+        {
+            $clients = Client::getAll();
+            foreach($clients as $client) {
+                if ($client->getId() == $id) {
+                    return $client;
+                }
+            }
+        }
 
         static function getAll()
         {
