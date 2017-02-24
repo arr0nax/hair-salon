@@ -1,3 +1,7 @@
 .inline {
     display: inline;
 }
+
+.welcome {
+    padding-left: 40px;
+}

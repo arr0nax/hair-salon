@@ -13,7 +13,7 @@
         <h3>{{client.getName}} doesn't have a stylist right now :(</h3>
     {% endif %}
     <h3>Edit this client</h3>
-    <form class="" action="/editclient/{{client.getId}}" method="post">
+    <form class="inline" action="/editclient/{{client.getId}}" method="post">
         <input type="hidden" name="_method" value="patch">
         <label for="name">Name</label>
         <input type="text" name="name" placeholder="{{client.getName}}" value="{{client.getName}}">
@@ -25,7 +25,7 @@
         </select>
         <button type="submit" name="button">Edit {{client.getName}}</button>
     </form>
-    <form class="" action="editclient/{{client.getId}}" method="post">
+    <form class="inline" action="editclient/{{client.getId}}" method="post">
         <input type="hidden" name="_method" value="delete">
         <button type="submit" name="button">Delete {{client.getName}}</button>
     </form>
