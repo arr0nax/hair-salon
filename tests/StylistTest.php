@@ -4,6 +4,7 @@
 * @backupStaticAttributes disabled
 */
     require_once 'src/Stylist.php';
+    require_once 'src/Client.php';
 
 
     $server = 'mysql:host=localhost:8889;dbname=hair_salon_test';
@@ -16,6 +17,7 @@
         protected function tearDown()
         {
             Stylist::deleteAll();
+            Client::deleteAll();
         }
 
         function test_save() {
@@ -127,6 +129,38 @@
 
             //assert
             $this->assertEquals($result[0], $test_stylist2);
+
+        }
+
+        function test_getClients() {
+            //arrange
+            $stylist_name = 'jack lantern';
+            $id = null;
+            $test_stylist = new Stylist($stylist_name, $id);
+            $test_stylist->save();
+
+            $stylist_name2 = 'hazel ween';
+            $id2 = null;
+            $test_stylist2 = new Stylist($stylist_name2, $id2);
+            $test_stylist2->save();
+
+            $client_name = 'sarah is god';
+            $stylist_id = $test_stylist2->getId();
+            $id = null;
+            $test_client = new Client($client_name,$stylist_id, $id);
+            $test_client->save();
+
+            $client_name2 = 'shrek is life';
+            $stylist_id2 = $test_stylist->getId();
+            $id2 = null;
+            $test_client2 = new Client($client_name2, $stylist_id2, $id2);
+            $test_client2->save();
+
+            //act
+            $result = $test_stylist->getClients();
+
+            //assert
+            $this->assertEquals($result, [$test_client2]);
 
         }
     }

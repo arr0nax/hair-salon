@@ -4,6 +4,7 @@
 * @backupStaticAttributes disabled
 */
     require_once 'src/Client.php';
+    require_once 'src/Stylist.php';
 
 
     $server = 'mysql:host=localhost:8889;dbname=hair_salon_test';
@@ -16,11 +17,12 @@
         protected function tearDown()
         {
             Client::deleteAll();
+            Stylist::deleteAll();
         }
 
         function test_save() {
             //arrange
-            $name = 'sarah god';
+            $name = 'sarah is god';
             $stylist_id = 2;
             $id = null;
             $test_client = new Client($name,$stylist_id, $id);
@@ -30,7 +32,7 @@
             $result = Client::getAll();
 
             //assert
-            $this->assertEquals($result[0], $test_client);
+            $this->assertEquals($result, [$test_client]);
         }
 
         function test_getAll() {
