@@ -31,6 +31,26 @@
             //assert
             $this->assertEquals($result[0], $test_stylist);
         }
+
+        function test_getAll() {
+            //arrange
+            $name = 'jack lantern';
+            $id = null;
+            $test_stylist = new Stylist($name, $id);
+
+            $name2 = 'hazel ween';
+            $id2 = null;
+            $test_stylist2 = new Stylist($name2, $id2);
+
+            //act
+            $test_stylist->save();
+            $test_stylist2->save();
+            $result = Stylist::getAll();
+
+            //assert
+            $this->assertEquals($result, [$test_stylist]);
+
+        }
     }
 
 
