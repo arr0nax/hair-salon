@@ -48,7 +48,7 @@
             $result = Stylist::getAll();
 
             //assert
-            $this->assertEquals($result, [$test_stylist]);
+            $this->assertEquals($result, [$test_stylist,$test_stylist2]);
 
         }
     }
