@@ -51,7 +51,7 @@
             $result = Client::getAll();
 
             //assert
-            $this->assertEquals($result, $test_client);
+            $this->assertEquals($result, [$test_client, $test_client2]);
         }
     }
 ?>
