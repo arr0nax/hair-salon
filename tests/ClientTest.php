@@ -112,7 +112,8 @@
             $test_client->save();
             $test_client->update($name2, $stylist_id2);
             $result = Client::getAll();
-            // $test_client->setName($name2);
+            $test_client->setName($name2);
+            $test_client->setStylist_id($stylist_id2);
 
             //assert
             $this->assertEquals($result[0], $test_client);
