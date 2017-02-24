@@ -62,7 +62,7 @@
         {
             $stylists = Stylist::getAll();
             foreach($stylists as $stylist) {
-                if ($stylist['id'] == $this->stylist_id) {
+                if ($stylist->getId() == $this->stylist_id) {
                     return true;
                 }
             }

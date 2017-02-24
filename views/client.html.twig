@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>{{client.getName}}</title>
-    </head>
-    <body>
-        <h2>{{client.getName}}</h2>
+<head>
+    <meta charset="utf-8">
+    <title>{{client.getName}}</title>
+    <link rel="stylesheet" href="../css/styles.css" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+    <h2>{{client.getName}}</h2>
+    {% if client.checkStylistExists %}
         <h3>Currently a client of {{(stylists[0].find(client.getStylist_id)).getName}}</h3>
-
-        <h3>Edit this client</h3>
-            <form class="" action="/editclient/{{client.getId}}" method="post">
-                <input type="hidden" name="_method" value="patch">
-                <label for="name">Name</label>
-                <input type="text" name="name" placeholder="{{client.getName}}" value="">
-                <label for="stylist_id">Stylist</label>
-                <select class="" name="stylist_id">
-                    {% for stylist in stylists %}
-                    <option value="{{stylist.getId}}">{{stylist.getName}}</option>
-                    {% endfor %}
-                </select>
-                <button type="submit" name="button">Edit {{client.getName}}</button>
-            </form>
-        <p>
-            <a href="/">Home</a>
-        </p>
-    </body>
+    {% else %}
+        <h3>{{client.getName}} doesn't have a stylist right now :(</h3>
+    {% endif %}
+    <h3>Edit this client</h3>
+    <form class="" action="/editclient/{{client.getId}}" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <label for="name">Name</label>
+        <input type="text" name="name" placeholder="{{client.getName}}" value="{{client.getName}}">
+        <label for="stylist_id">Stylist</label>
+        <select class="" name="stylist_id">
+            {% for stylist in stylists %}
+                <option value="{{stylist.getId}}">{{stylist.getName}}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" name="button">Edit {{client.getName}}</button>
+    </form>
+    <form class="" action="editclient/{{client.getId}}" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button type="submit" name="button">Delete {{client.getName}}</button>
+    </form>
+    <p>
+        <a href="/">Home</a>
+    </p>
+</body>
 </html>

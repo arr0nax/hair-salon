@@ -1,40 +1,39 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>{{stylist.getName}}</title>
-        <link rel="stylesheet" href="css/styles.css" media="screen" title="no title" charset="utf-8">
-    </head>
-    <body>
-        <h2>{{stylist.getName}}</h2>
-        <form class="inline" action="/editstylist/{{stylist.getId}}" method="post">
-            <h3>Edit Stylist Name</h3>
-            <input type="hidden" name="_method" value="patch">
-            <label for="name">New Name: </label>
-            <input type="text" name="name" placeholder="{{stylist.getName}}" value="">
-            <button type="submit" name="button">Edit Stylist</button>
-        </form>
-        <form class="inline" action="/editstylist/{{stylist.getId}}" method="post">
-            <h3>Delete This Stylist</h3>
-            <input type="hidden" name="_method" value="delete">
-            <button type="submit" name="button">Delete {{stylist.getName}}</button>
-        </form>
-        <h2>{{stylist.getName}}'s Clients</h2>
-        <ul>
-            {% for client in clients %}
-                <a href="/client/{{client.getId}}"><li>{{client.getName}}</li></a>
-            {% endfor %}
-        </ul>
-        <form class="inline" action="/addclient" method="post">
-            <h3>Add Clients</h3>
-            <input type="hidden" name="stylist_id" value="{{stylist.getId}}">
-            <label for="name">Client name:</label>
-            <input type="text" name="name" value="">
-            <button type="submit" name="button">Add Client</button>
-        </form>
+<head>
+    <meta charset="utf-8">
+    <title>{{stylist.getName}}</title>
+    <link rel="stylesheet" href="../css/styles.css" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+    <h2>{{stylist.getName}}</h2>
+    <h3 class="inline">Edit Stylist  </h3>
+    <form class="inline" action="/editstylist/{{stylist.getId}}" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <label for="name">New Name: </label>
+        <input type="text" name="name" placeholder="{{stylist.getName}}" value="">
+        <button type="submit" name="button">Edit Stylist</button>
+    </form>
+    <form class="inline" action="/editstylist/{{stylist.getId}}" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button type="submit" name="button">Delete {{stylist.getName}}</button>
+    </form>
+    <h2>{{stylist.getName}}'s Clients</h2>
+    <ul>
+        {% for client in clients %}
+        <a href="/client/{{client.getId}}"><li>{{client.getName}}</li></a>
+        {% endfor %}
+    </ul>
+    <h3 class="inline">Add Clients</h3>
+    <form class="inline" action="/addclient" method="post">
+        <input type="hidden" name="stylist_id" value="{{stylist.getId}}">
+        <label for="name">Client name:</label>
+        <input type="text" name="name" value="">
+        <button type="submit" name="button">Add Client</button>
+    </form>
 
-        <p>
-            <a href="/">HOME</a>
-        </p>
-    </body>
+    <p>
+        <a href="/">HOME</a>
+    </p>
+</body>
 </html>

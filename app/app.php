@@ -19,7 +19,8 @@
 
     $app->get('/', function() use($app) {
         $stylists = Stylist::getAll();
-        return $app['twig']->render("root.html.twig", ['stylists' => $stylists]);
+        $clients = Client::getAll();
+        return $app['twig']->render("root.html.twig", ['stylists' => $stylists, 'clients' => $clients]);
     });
 
     $app->post('/addstylist', function() use($app) {
@@ -64,6 +65,12 @@
     $app->delete('/editstylist/{id}', function($id) use($app) {
         $stylist = Stylist::find($id);
         $stylist->delete();
+        return $app->redirect('/');
+    });
+
+    $app->delete('/editclient/{id}', function($id) use($app) {
+        $client = Client::find($id);
+        $client->delete();
         return $app->redirect('/');
     });
 
