@@ -87,7 +87,7 @@
             $result = Stylist::find($test_stylist2->getId());
 
             //assert
-            $this->assertEquals($result, $test_stylist);
+            $this->assertEquals($result, $test_stylist2);
         }
     }
 
