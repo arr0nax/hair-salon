@@ -108,6 +108,27 @@
             //assert
             $this->assertEquals($result[0], $test_stylist);
         }
+
+        function test_delete() {
+            //arrange
+            $name = 'jack lantern';
+            $id = null;
+            $test_stylist = new Stylist($name, $id);
+
+            $name2 = 'hazel ween';
+            $id2 = null;
+            $test_stylist2 = new Stylist($name2, $id2);
+
+            //act
+            $test_stylist->save();
+            $test_stylist2->save();
+            $test_stylist->delete();
+            $result = Stylist::getAll();
+
+            //assert
+            $this->assertEquals($result, [$test_stylist, $test_stylist2]);
+
+        }
     }
 
 

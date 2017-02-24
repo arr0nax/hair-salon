@@ -41,6 +41,11 @@
             $GLOBALS['DB']->exec("UPDATE stylists SET name = '{$name}' WHERE id = {$this->getId()};");
         }
 
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
+        }
+
         static function find($id)
         {
             $stylists = Stylist::getAll();
