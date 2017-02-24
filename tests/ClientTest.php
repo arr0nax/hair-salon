@@ -144,5 +144,28 @@
             $this->assertEquals($result[0], $test_client2);
 
         }
+
+        function test_StylistExists()
+        {
+            //arrange
+            $stylist_name = 'jack lantern';
+            $id = null;
+            $test_stylist = new Stylist($stylist_name, $id);
+            $test_stylist->save();
+
+            $client_name = 'sarah is god';
+            $stylist_id = $test_stylist->getId();
+            $id = null;
+            $test_client = new Client($client_name,$stylist_id, $id);
+            $test_client->save();
+
+            //act
+            $test_stylist->delete();
+            $result = $test_client->checkStylistExists();
+
+            //assert
+            $this->assertEquals($result, false);
+
+        }
     }
 ?>

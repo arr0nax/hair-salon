@@ -22,7 +22,7 @@
         <h2>{{stylist.getName}}'s Clients</h2>
         <ul>
             {% for client in clients %}
-                <li>{{client.getName}}</li>
+                <a href="/client/{{client.getId}}"><li>{{client.getName}}</li></a>
             {% endfor %}
         </ul>
         <form class="inline" action="/addclient" method="post">

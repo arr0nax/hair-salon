@@ -58,6 +58,17 @@
             $GLOBALS['DB']->exec("DELETE FROM clients WHERE id = {$this->getId()};");
         }
 
+        function checkStylistExists()
+        {
+            $stylists = Stylist::getAll();
+            foreach($stylists as $stylist) {
+                if ($stylist['id'] == $this->stylist_id) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         static function find($id)
         {
             $clients = Client::getAll();

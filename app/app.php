@@ -43,10 +43,22 @@
         return $app['twig']->render("stylist.html.twig", ['stylist' => $stylist, 'clients' => $clients]);
     });
 
+    $app->get('/client/{id}', function($id) use($app) {
+        $stylists = Stylist::getAll();
+        $client = Client::find($id);
+        return $app['twig']->render("client.html.twig", ['stylists' => $stylists, 'client' => $client]);
+    });
+
     $app->patch('/editstylist/{id}', function($id) use($app) {
         $stylist = Stylist::find($id);
         $stylist->update($_POST['name']);
         return $app->redirect('/stylist/'.$id);
+    });
+
+    $app->patch('/editclient/{id}', function($id) use($app) {
+        $client = Client::find($id);
+        $client->update($_POST['name'], $_POST['stylist_id']);
+        return $app->redirect('/client/'.$id);
     });
 
     $app->delete('/editstylist/{id}', function($id) use($app) {
