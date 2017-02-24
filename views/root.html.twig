@@ -10,10 +10,15 @@
         <h2>Your Stylists</h2>
         <ul>
             {% for stylist in stylists %}
-                <li>{{stylist.getName}}</li>
+                <a href="/editstylist/{{stylist.getId}}"><li>{{stylist.getName}}</li></a>
             {% endfor %}
         </ul>
         <h2>Add a Stylist</h2>
+            <form class="" action="/addstylist" method="post">
+                <label for="name">Name:</label>
+                <input type="text" name="name" value="">
+                <button type="submit" name="button">Add</button>
+            </form>
 
     </body>
 </html>

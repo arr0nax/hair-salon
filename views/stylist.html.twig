@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{{stylist.getName}}</title>
+    </head>
+    <body>
+        <h2>{{stylist.getName}}</h2>
+        <h3>Edit Name</h3>
+        <form class="" action="/editstylist/{{stylist.getId}}" method="post">
+            <input type="hidden" name="_method" value="patch">
+            <label for="name">New Name: </label>
+            <input type="text" name="name" placeholder="{{stylist.getName}}" value="">
+            <button type="submit" name="button">Edit</button>
+        </form>
+        <h3>Delete This Stylist</h3>
+        <form class="" action="/editstylist/{{stylist.getId}}" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit" name="button">Delete {{stylist.getName}}</button>
+        </form>
+        <p>
+            <a href="/">HOME</a>
+        </p>
+    </body>
+</html>

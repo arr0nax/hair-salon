@@ -17,16 +17,32 @@
     Request::enableHttpMethodParameterOverride();
 
     $app->get('/', function() use($app) {
-        $name = 'jack lantern';
-        $id = null;
-        $test_stylist = new Stylist($name, $id);
-        $name2 = 'hazel ween';
-        $id2 = null;
-        $test_stylist2 = new Stylist($name2, $id2);
-        $test_stylist->save();
-        $test_stylist2->save();
         $stylists = Stylist::getAll();
         return $app['twig']->render("root.html.twig", ['stylists' => $stylists]);
+    });
+
+    $app->post('/addstylist', function() use($app) {
+        $name = $_POST['name'];
+        $new_stylist = new Stylist($name);
+        $new_stylist->save();
+        return $app->redirect('/');
+    });
+
+    $app->get('/editstylist/{id}', function($id) use($app) {
+        $stylist = Stylist::find($id);
+        return $app['twig']->render("stylist.html.twig", ['stylist' => $stylist]);
+    });
+
+    $app->patch('/editstylist/{id}', function($id) use($app) {
+        $stylist = Stylist::find($id);
+        $stylist->update($_POST['name']);
+        return $app->redirect('/editstylist/'.$id);
+    });
+
+    $app->delete('/editstylist/{id}', function($id) use($app) {
+        $stylist = Stylist::find($id);
+        $stylist->delete();
+        return $app->redirect('/');
     });
 
     return $app;
