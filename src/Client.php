@@ -53,10 +53,10 @@
             $GLOBALS['DB']->exec("UPDATE clients SET name = '{$name}', stylist_id = '{$stylist_id}' WHERE id = {$this->getId()};");
         }
 
-        // function delete()
-        // {
-        //     $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
-        // }
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM clients WHERE id = {$this->getId()};");
+        }
 
         static function find($id)
         {

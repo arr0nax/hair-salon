@@ -139,7 +139,7 @@
             $result = Client::getAll();
 
             //assert
-            $this->assertEquals($result, $test_client2);
+            $this->assertEquals($result[0], $test_client2);
 
         }
     }
