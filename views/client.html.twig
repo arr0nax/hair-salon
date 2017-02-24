@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{{client.getName}}</title>
+    </head>
+    <body>
+        <h2>{{client.getName}}</h2>
+        <h3>Currently a client of {{stylist.find(client.getStylist_id)}}</h3>
+
+        <h3>Edit this client</h3>
+            <form class="" action="/editclient{{client.getId}}" method="post">
+                <input type="hidden" name="_method" value="patch">
+                <label for="name">Name</label>
+                <input type="text" name="name" placeholder="{{client.getName}}" value="">
+                <label for="stylist_id">Stylist</label>
+                <select class="" name="stylist_id">
+                    <option value="1">1</option>
+                </select>
+            </form>
+    </body>
+</html>
