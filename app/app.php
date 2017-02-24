@@ -3,6 +3,7 @@
 
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/Stylist.php";
+    require_once __DIR__."/../src/Client.php";
 
     $server = 'mysql:host=localhost:8889;dbname=hair_salon';
     $username = 'root';
@@ -28,15 +29,24 @@
         return $app->redirect('/');
     });
 
-    $app->get('/editstylist/{id}', function($id) use($app) {
+    $app->post('/addclient', function() use($app) {
+        $name = $_POST['name'];
+        $stylist_id = $_POST['stylist_id'];
+        $new_client = new Client($name, $stylist_id);
+        $new_client->save();
+        return $app->redirect('/stylist/'.$stylist_id);
+    });
+
+    $app->get('/stylist/{id}', function($id) use($app) {
         $stylist = Stylist::find($id);
-        return $app['twig']->render("stylist.html.twig", ['stylist' => $stylist]);
+        $clients = $stylist->getClients();
+        return $app['twig']->render("stylist.html.twig", ['stylist' => $stylist, 'clients' => $clients]);
     });
 
     $app->patch('/editstylist/{id}', function($id) use($app) {
         $stylist = Stylist::find($id);
         $stylist->update($_POST['name']);
-        return $app->redirect('/editstylist/'.$id);
+        return $app->redirect('/stylist/'.$id);
     });
 
     $app->delete('/editstylist/{id}', function($id) use($app) {
